@@ -1,0 +1,198 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<!-- Hero Section -->
+ 
+<div class="hero-section d-flex align-items-center text-center text-white"
+     style="min-height: 100vh; background: linear-gradient(135deg, #07a060, #2a07da); position: relative;">
+  <div class="container">
+    <!-- Logo -->
+    <img src="{% static 'images/logo.png' %}" alt="Smart Grievances Logo"
+         class="mb-4 animate-pop" style="width:120px;">
+
+    <!-- Title -->
+    <h1 class="fw-bold display-4 animate-pop">Smart Grievances Portal</h1>
+    <p id="typing-text" class="lead mb-4"></p>
+
+    <!-- Buttons -->
+    <div class="d-flex justify-content-center gap-3">
+      <a href="{% url 'register' %}" class="btn btn-warning btn-lg shadow-lg animate-btn">
+        <i class="bi bi-person-plus"></i> Register
+      </a>
+      <a href="{% url 'login' %}" class="btn btn-light btn-lg shadow-lg animate-btn">
+        <i class="bi bi-box-arrow-in-right"></i> Login
+      </a>
+    </div>
+
+    <!-- Scroll Down -->
+    <a href="#features" class="scroll-down text-white mt-5 d-block">
+      <i class="bi bi-chevron-double-down fs-1"></i>
+    </a>
+  </div>
+</div>
+
+<!-- Features Section -->
+<div class="container my-5" id="features">
+  <h2 class="fw-bold text-center mb-4" data-aos="fade-up">✨ Why Use Our Portal?</h2>
+  <div class="row text-center">
+    <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+      <div class="card shadow-lg p-4 glass-card feature-card">
+        <i class="bi bi-pencil-square text-primary fs-1 mb-3"></i>
+        <h5 class="fw-bold">Easy Complaint Submission</h5>
+        <p>Submit your grievances in just a few clicks with our simple interface.</p>
+      </div>
+    </div>
+    <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+      <div class="card shadow-lg p-4 glass-card feature-card">
+        <i class="bi bi-bar-chart-line text-success fs-1 mb-3"></i>
+        <h5 class="fw-bold">Real-Time Tracking</h5>
+        <p>Track the status of your complaint at every stage with transparency.</p>
+      </div>
+    </div>
+    <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
+      <div class="card shadow-lg p-4 glass-card feature-card">
+        <i class="bi bi-shield-lock text-warning fs-1 mb-3"></i>
+        <h5 class="fw-bold">Secure & Reliable</h5>
+        <p>Your information is safe with us thanks to strong security protocols.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Statistics Section -->
+<div class="py-5 text-white text-center"
+     style="background: linear-gradient(135deg, #00C897, #007BFF);">
+  <div class="container">
+    <h2 class="fw-bold mb-4" data-aos="fade-up">📊 Our Impact</h2>
+    <div class="row">
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+        <h1 class="counter fw-bold" data-target="1200">0</h1>
+        <p>Complaints Resolved</p>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+        <h1 class="counter fw-bold" data-target="500">0</h1>
+        <p>Active Users</p>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+        <h1 class="counter fw-bold" data-target="15">0</h1>
+        <p>Colleges Using Portal</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Testimonials Section -->
+<div class="container my-5" id="testimonials">
+  <h2 class="fw-bold text-center mb-4" data-aos="fade-up">💬 What Students Say</h2>
+
+  <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+
+      <!-- Testimonial 1 -->
+      <div class="carousel-item active text-center" data-aos="fade-up">
+        <div class="card shadow-lg p-4 mx-auto" style="max-width: 700px;">
+          <i class="bi bi-chat-quote text-primary fs-1 mb-3"></i>
+          <p class="lead">“This portal made it super easy to file complaints. I could track everything in real time.”</p>
+          <h6 class="fw-bold mt-3">– Riya Sharma, BCA Student</h6>
+        </div>
+      </div>
+
+      <!-- Testimonial 2 -->
+      <div class="carousel-item text-center" data-aos="fade-up">
+        <div class="card shadow-lg p-4 mx-auto" style="max-width: 700px;">
+          <i class="bi bi-chat-quote text-success fs-1 mb-3"></i>
+          <p class="lead">“Finally, a system where students feel heard! Quick responses and transparency.”</p>
+          <h6 class="fw-bold mt-3">– Aman Verma, MBA Student</h6>
+        </div>
+      </div>
+
+      <!-- Testimonial 3 -->
+      <div class="carousel-item text-center" data-aos="fade-up">
+        <div class="card shadow-lg p-4 mx-auto" style="max-width: 700px;">
+          <i class="bi bi-chat-quote text-warning fs-1 mb-3"></i>
+          <p class="lead">“The portal is very user-friendly. I didn’t have to run around the office anymore.”</p>
+          <h6 class="fw-bold mt-3">– Sneha Patil, Engineering Student</h6>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon bg-dark rounded-circle" aria-hidden="true"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon bg-dark rounded-circle" aria-hidden="true"></span>
+    </button>
+  </div>
+</div>
+
+
+<!-- Footer -->
+<footer class="text-white text-center py-4"
+        style="background: linear-gradient(135deg, #007BFF, #00C897);">
+  <p class="mb-2">© 2025 Smart Grievances Portal. All Rights Reserved.</p>
+  <div class="social-icons">
+    <a href="#" class="text-white mx-2"><i class="bi bi-facebook"></i></a>
+    <a href="#" class="text-white mx-2"><i class="bi bi-twitter"></i></a>
+    <a href="#" class="text-white mx-2"><i class="bi bi-instagram"></i></a>
+  </div>
+</footer>
+
+<!-- Styles -->
+<style>
+  body { font-family: 'Poppins', sans-serif; }
+  .animate-pop { animation: pop 0.6s ease; }
+  .animate-btn:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(255,255,255,0.7); }
+  .feature-card:hover { transform: translateY(-10px); transition: 0.3s; }
+
+  @keyframes pop { 0% { transform: scale(0.8); opacity:0; } 100% { transform: scale(1); opacity:1; } }
+
+  .scroll-down i {
+    animation: bounce 1.5s infinite;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+  }
+</style>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<script>
+  AOS.init();
+
+  // Typing Effect
+  const text = "Making student grievance handling simple, transparent & efficient.";
+  let i = 0;
+  function typeEffect() {
+    if (i < text.length) {
+      document.getElementById("typing-text").innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typeEffect, 50);
+    }
+  }
+  window.onload = typeEffect;
+
+  // Counter Animation
+  const counters = document.querySelectorAll('.counter');
+  const speed = 200;
+  counters.forEach(counter => {
+    const updateCount = () => {
+      const target = +counter.getAttribute('data-target');
+      const count = +counter.innerText;
+      const increment = target / speed;
+      if (count < target) {
+        counter.innerText = Math.ceil(count + increment);
+        setTimeout(updateCount, 20);
+      } else {
+        counter.innerText = target;
+      }
+    };
+    updateCount();
+  });
+</script>
+{% endblock %}

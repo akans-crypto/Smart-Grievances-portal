@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h2>All Complaints</h2>
+  <a class="btn btn-primary" href="{% url 'submit_complaint' %}">+ New Complaint</a>
+</div>
+
+<form method="get" class="row g-2 mb-3">
+  <div class="col-md-4"><input name="q" value="{{ request.GET.q }}" class="form-control" placeholder="Search subject or description"></div>
+  <div class="col-md-3">
+    <select name="status" class="form-select">
+      <option value="">All statuses</option>
+      <option value="Pending" {% if request.GET.status == 'Pending' %}selected{% endif %}>Pending</option>
+      <option value="In Progress" {% if request.GET.status == 'In Progress' %}selected{% endif %}>In Progress</option>
+      <option value="Resolved" {% if request.GET.status == 'Resolved' %}selected{% endif %}>Resolved</option>
+    </select>
+  </div>
+  <div class="col-md-2"><button class="btn btn-outline-primary">Filter</button></div>
+</form>
+
+<div class="card glass-card">
+  <div class="card-body">
+    <table class="table">
+      <thead><tr><th>Subject</th><th>Category</th><th>Status</th><th>Priority</th><th>Date</th><th></th></tr></thead>
+      <tbody>
+      {% for c in complaints %}
+        <tr>
+          <td><a href="{% url 'complaint_detail' c.pk %}">{{ c.subject }}</a></td>
+          <td>{{ c.category }}</td>
+          <td>{{ c.status }}</td>
+          <td>{{ c.priority_level }}</td>
+          <td>{{ c.created_at|date:"d M Y H:i" }}</td>
+          <td><a class="btn btn-sm btn-outline-primary" href="{% url 'complaint_detail' c.pk %}">Open</a></td>
+        </tr>
+      {% empty %}
+        <tr><td colspan="6">No complaints found.</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+
+    <!-- pagination -->
+    <nav aria-label="pagination">
+      <ul class="pagination">
+        {% if complaints.has_previous %}<li class="page-item"><a class="page-link" href="?page={{ complaints.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">&laquo; Prev</a></li>{% endif %}
+        <li class="page-item disabled"><span class="page-link">Page {{ complaints.number }} of {{ complaints.paginator.num_pages }}</span></li>
+        {% if complaints.has_next %}<li class="page-item"><a class="page-link" href="?page={{ complaints.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">Next &raquo;</a></li>{% endif %}
+      </ul>
+    </nav>
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+/* background + glass + typography */
+:root {
+  --accent: #3b82f6;
+  --glass: rgba(255,255,255,0.7);
+}
+body {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: radial-gradient(800px 400px at 12% 10%, #eaf4ff, transparent),
+              linear-gradient(135deg, #f8fafc, #ffffff);
+  color: #0f172a;
+  min-height: 100vh;
+}
+.container {
+  max-width: 1150px;
+}
+.glass-card {
+  background: rgba(255,255,255,0.7);
+  border-radius: 12px;
+  padding: 0;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 10px 30px rgba(2,6,23,0.06);
+}
+.stat-card { border-radius:12px; padding:18px; box-shadow: 0 6px 20px rgba(11,46,92,0.06); }
+.stat-icon { font-size:28px; opacity:.9; }
+.table-hover tbody tr:hover { background: rgba(59,130,246,0.03); }
+.sidebar { min-height: 100vh; border-right: 1px solid rgba(0,0,0,0.04); }
+.nav-link.active { font-weight:600; color:var(--accent) !important; }
+
+/* responsive helpers */
+@media (max-width: 768px) {
+  .sidebar { display:none; }
+}

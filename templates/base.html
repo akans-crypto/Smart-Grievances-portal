@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Smart Grievances Portal{% endblock %}</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- AOS (Animate On Scroll) -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    .navbar .nav-link {
+      color: #fff !important;
+      transition: 0.3s;
+      font-weight: 500;
+    }
+    .navbar .nav-link:hover {
+      color: #FFD700 !important; /* Gold hover */
+    }
+    .navbar .nav-link.active {
+      border-bottom: 2px solid #FFD700;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-sm">
+    <div class="container">
+
+      <!-- Logo + Brand -->
+      <a class="navbar-brand d-flex align-items-center" href="{% url 'homepage' %}">
+        <img src="{% static 'images/logo.png' %}" alt="Logo" width="35" class="me-2">
+        <span class="fw-bold">Smart Grievances</span>
+      </a>
+
+      <!-- Mobile Menu Button -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navbar Links -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link active" href="{% url 'homepage' %}">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'complaint_list' %}">Complaint</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profile</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+
+
+          <!-- Show different buttons if user is logged in -->
+          {% if user.is_authenticated %}
+            <li class="nav-item dropdown ms-lg-3">
+              <a class="nav-link dropdown-toggle btn btn-warning text-dark px-3 fw-bold" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                <i class="bi bi-person-circle"></i> {{ user.username }}
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                {% if user.is_staff %}
+                  <li><a class="dropdown-item" href="{% url 'admin_dashboard' %}">Admin Dashboard</a></li>
+                {% else %}
+                  <li><a class="dropdown-item" href="{% url 'dashboard' %}">Student Dashboard</a></li>
+                {% endif %}
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item text-danger" href="{% url 'logout' %}">Logout</a></li>
+              </ul>
+            </li>
+          {% else %}
+            <li class="nav-item ms-lg-3">
+              <a href="{% url 'login' %}" class="btn btn-warning px-3 fw-bold">Login</a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- Add spacing so content isn't hidden under navbar -->
+  <div style="margin-top: 80px;"></div>
+
+  <!-- Page Content -->
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-white text-center py-4 mt-5" style="background: linear-gradient(135deg, #007BFF, #00C897);">
+    <p class="mb-2">© 2025 Smart Grievances Portal. All Rights Reserved.</p>
+    <div class="social-icons">
+      <a href="#" class="text-white mx-2"><i class="bi bi-facebook"></i></a>
+      <a href="#" class="text-white mx-2"><i class="bi bi-twitter"></i></a>
+      <a href="#" class="text-white mx-2"><i class="bi bi-instagram"></i></a>
+    </div>
+  </footer>
+
+  <!-- Initialize AOS -->
+  <script>
+    AOS.init();
+  </script>
+
+</body>
+</html>
